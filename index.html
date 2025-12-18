@@ -1,10 +1,17 @@
-<!DOCTYPE html><html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Instagram • Login</title>
+  <title>Biogram • Login</title>
+
   <style>
-    * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    * {
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Helvetica, Arial, sans-serif;
+    }
+
     body {
       margin: 0;
       background: #fff;
@@ -13,17 +20,32 @@
       align-items: center;
       height: 100vh;
     }
+
     .container {
       width: 100%;
       max-width: 350px;
       padding: 40px 30px;
+
+      /* CENTRALIZA NO EIXO X */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
+
     .logo {
-      font-family: 'Billabong', cursive;
-      font-size: 42px;
-      text-align: center;
       margin-bottom: 30px;
     }
+
+    .logo img {
+      display: block;
+      margin: 0 auto;
+      max-width: 180px;
+    }
+
+    form {
+      width: 100%;
+    }
+
     input {
       width: 100%;
       padding: 12px;
@@ -33,6 +55,7 @@
       border-radius: 4px;
       font-size: 14px;
     }
+
     button {
       width: 100%;
       padding: 10px;
@@ -44,89 +67,108 @@
       font-weight: 600;
       cursor: pointer;
     }
+
     .forgot {
+      width: 100%;
       text-align: right;
       margin-top: 10px;
       font-size: 12px;
     }
+
     .forgot a {
       color: #00376b;
       text-decoration: none;
     }
+
     .or {
+      width: 100%;
       display: flex;
       align-items: center;
       margin: 20px 0;
       font-size: 13px;
       color: #8e8e8e;
     }
-    .or::before, .or::after {
+
+    .or::before,
+    .or::after {
       content: "";
       flex: 1;
       height: 1px;
       background: #dbdbdb;
     }
-    .or span { margin: 0 10px; }
+
+    .or span {
+      margin: 0 10px;
+    }
+
     .facebook {
       text-align: center;
       color: #385185;
       font-weight: 600;
       cursor: pointer;
     }
+
     .signup {
       margin-top: 40px;
       text-align: center;
       font-size: 14px;
     }
-    .signup a { color: #0095f6; text-decoration: none; font-weight: 600; }
+
+    .signup a {
+      color: #0095f6;
+      text-decoration: none;
+      font-weight: 600;
+    }
   </style>
 </head>
+
 <body>
   <div class="container">
-    <a href="https://i.postimg.cc/zDdCYPyg/Captura-de-tela-2025-12-17-221627.png" class="logo">
-  <img src="https://i.postimg.cc/zDdCYPyg/Captura-de-tela-2025-12-17-221627.png" alt="biogram">
-</a>
-  <input type="text" id="email" placeholder="Telefone, nome de usuário ou email" required />
-  <input type="password" id="password" placeholder="Senha" required />
-  <button type="submit">Entrar</button>
-</form>
+    <a href="#" class="logo">
+      <img
+        src="https://i.postimg.cc/zDdCYPyg/Captura-de-tela-2025-12-17-221627.png"
+        alt="Biogram"
+      />
+    </a>
 
-<div class="forgot"><a href="#">Esqueceu a senha?</a></div>
+    <form id="loginForm">
+      <input
+        type="text"
+        id="email"
+        placeholder="Telefone, nome de usuário ou email"
+        required
+      />
+      <input
+        type="password"
+        id="password"
+        placeholder="Senha"
+        required
+      />
+      <button id="loginBtn" type="submit">Entrar</button>
+    </form>
 
-<div class="or"><span>OU</span></div>
+    <div class="forgot"><a href="#">Esqueceu a senha?</a></div>
 
-<div class="facebook">Entrar com Facebook</div>
+    <div class="or"><span>OU</span></div>
 
-<div class="signup">Não tem uma conta? <a href="#">Cadastre-se</a></div>
+    <div class="facebook">Entrar com Facebook</div>
 
-  </div>  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>  <script>
-    const SUPABASE_URL = "https://SEU_PROJETO.supabase.co";
-    const SUPABASE_KEY = "SUA_PUBLIC_ANON_KEY";
+    <div class="signup">
+      Não tem uma conta? <a href="#">Cadastre-se</a>
+    </div>
+  </div>
 
-    const supabase = supabaseJs.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-    document.getElementById("loginForm").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email,
-        password
-      });
-
-      if (error) {
-        alert("Erro ao entrar: " + error.message);
-      } else {
-        alert("Login realizado com sucesso!");
-        console.log(data);
-      }
-    });
-  </script>
-   <div id="whiteScreen"></div>
+  <div id="whiteScreen" style="
+    display:none;
+    position:fixed;
+    inset:0;
+    background:#fff;
+    z-index:9999;"></div>
 
   <script>
-    document.getElementById("loginBtn").addEventListener("click", () => {
+    document.getElementById("loginForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+
       document.getElementById("whiteScreen").style.display = "block";
 
       setTimeout(() => {
@@ -136,4 +178,4 @@
     });
   </script>
 </body>
-  </html>
+</html>
